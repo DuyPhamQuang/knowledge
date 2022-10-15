@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerindocker
+spec:
+  selector:
+    matchLabels:
+      app: dockerindocker
+  template:
+    metadata:
+      labels:
+        app: dockerindocker
+    spec:
+      containers:
+      - name: dockerindocker
+        image: docker:20.10.17-git
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      - name: docker deamon
+        image: docker:20.10.17-dind
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 2376
+        - containerPort: 2375
+            
+

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-odoo
+spec:
+  selector:
+    matchLabels:
+      app: nginx-odoo
+  template:
+    metadata:
+      labels:
+        app: nginx-odoo
+    spec:
+      containers:
+      - name: nginx-odoo
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
